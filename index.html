@@ -4,89 +4,277 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kelly Chen｜Tsuki Design Lab</title>
-  <meta name="description" content="Kelly Chen｜Founder / CEO｜Tsuki Design Lab" />
+
   <style>
     :root{
-      --bg:#faf9f7;
-      --ink:#1f1f1f;
-      --muted:#6b6b6b;
-      --card:#ffffff;
-      --line:#e9e6e1;
-      --accent:#ff5a1f;
-      --purple:#6f22c8;
+      --bg: #f7f4fb;
+      --card: #ffffff;
+      --text: #1f1f1f;
+      --muted: rgba(31,31,31,.65);
+      --line: rgba(31,31,31,.10);
+      --shadow: 0 10px 30px rgba(31,31,31,.08);
+
+      --purple: #6f22c8;     /* 品牌紫 */
+      --accent: #ff4a1a;     /* 紅橘跳色 */
+      --btn: #1f1f1f;
+      --btnText: #ffffff;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);}
-    .wrap{max-width:860px;margin:0 auto;padding:28px 16px 64px}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 4px;margin-bottom:18px;}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 3px rgba(111,34,200,.12);}
-    .brand strong{letter-spacing:.2px}
-    .badge{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:#fff;}
-    .hero{background:linear-gradient(180deg, rgba(111,34,200,.10), rgba(111,34,200,0));border:1px solid var(--line);border-radius:18px;padding:22px 18px;}
-    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    @media (max-width:820px){.grid{grid-template-columns:1fr}}
-    h1{margin:0 0 10px;font-size:28px}
-    .sub{margin:0;color:var(--muted);line-height:1.7}
-    .kvs{margin-top:14px;display:grid;gap:10px}
-    .kv{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;}
-    .kv span{color:var(--muted)}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start;margin-top:14px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;font-weight:600;}
-    .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .btn.accent{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:14px}
-    .panel h2{margin:0 0 10px;font-size:16px}
-    .list{display:grid;gap:10px}
-    .item{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-    footer{margin-top:18px;color:var(--muted);font-size:12px}
-    code{background:#f1efe9;padding:2px 6px;border-radius:8px}
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                   "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 15% 0%, rgba(111,34,200,.10), transparent 60%),
+                  radial-gradient(900px 500px at 100% 10%, rgba(255,74,26,.10), transparent 55%),
+                  var(--bg);
+    }
+
+    .wrap{
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding: 6px 4px 10px;
+    }
+
+    .logo{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 8px 18px rgba(31,31,31,.10);
+      flex: 0 0 auto;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    .brand h1{
+      font-size: 18px;
+      margin:0;
+      letter-spacing: .2px;
+    }
+    .brand p{
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero{
+      margin-top: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.92));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .name{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .name .left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .name .left .cn{
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .name .left .en{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .badge{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(111,34,200,.25);
+      color: var(--purple);
+      background: rgba(111,34,200,.06);
+      font-weight: 700;
+      white-space:nowrap;
+    }
+
+    .desc{
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      margin-top: 14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 800;
+      font-size: 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height: 44px;
+      flex: 1 1 140px;
+      box-shadow: 0 8px 18px rgba(31,31,31,.06);
+    }
+    .btn.primary{
+      background: var(--accent);
+      border-color: rgba(255,74,26,.35);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(255,74,26,.22);
+    }
+    .btn.dark{
+      background: var(--btn);
+      color: var(--btnText);
+      border-color: rgba(31,31,31,.25);
+      box-shadow: 0 10px 24px rgba(31,31,31,.18);
+    }
+
+    .panel{
+      margin-top: 12px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(31,31,31,.08);
+    }
+    .row + .row{ margin-top: 10px; }
+
+    .k{
+      font-size: 13px;
+      color: var(--muted);
+      min-width: 56px;
+    }
+    .v{
+      font-size: 15px;
+      font-weight: 800;
+      text-align:right;
+      overflow-wrap:anywhere;
+    }
+    .v a{
+      color: var(--text);
+      text-decoration:none;
+      border-bottom: 1px dashed rgba(31,31,31,.25);
+    }
+
+    footer{
+      margin-top: 14px;
+      text-align:center;
+      color: rgba(31,31,31,.45);
+      font-size: 12px;
+      padding: 10px 0 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .hero, .panel{ animation: pop .5s ease both; }
+      .panel{ animation-delay: .05s; }
+      @keyframes pop{
+        from{ transform: translateY(10px); opacity:0; }
+        to{ transform: translateY(0); opacity:1; }
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <a class="brand" href="/">
-        <span class="dot" aria-hidden="true"></span>
-        <strong>Tsuki Design Lab</strong>
-      </a>
-      <span class="badge">Digital Business Card</span>
+  <main class="wrap">
+    <div class="brand">
+      <div class="logo" title="Tsuki Design Lab">
+        <!-- 你 repo 裡若有 logo 檔，改成對應路徑即可；沒有也沒差 -->
+        <img src="logo.png" alt="Tsuki Design Lab" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, rgba(111,34,200,.20), rgba(255,74,26,.14))';" />
+      </div>
+      <div>
+        <h1>Tsuki Design Lab</h1>
+        <p>Digital business card</p>
+      </div>
     </div>
 
     <section class="hero">
-      <div class="grid">
-        <div>
-          <h1>陳姿妗 Kelly Chen</h1>
-          <p class="sub">執行長 / 創辦人｜茲奇製研所有限公司 Tsuki Design Lab Ltd.<br/>
-          致力於發展創新產品與服務設計，領域包括孩童、永續、醫療、物聯網及家電。</p>
-
-          <div class="actions">
-            <a class="btn accent" href="kelly.pdf" target="_blank" rel="noopener">開啟名片 PDF</a>
-            <a class="btn primary" href="mailto:tsukidesignlab@gmail.com">Email</a>
-            <a class="btn" href="tel:+886989344398">撥打電話</a>
-          </div>
-
-          <div class="kvs">
-            <div class="kv"><span>IG</span><strong>@kellychen910912</strong></div>
-            <div class="kv"><span>電話</span><strong>0989-344-398</strong></div>
-            <div class="kv"><span>Email</span><strong>tsukidesignlab@gmail.com</strong></div>
-            <div class="kv"><span>地址</span><strong>臺北市中正區衡陽路10號7樓</strong></div>
-          </div>
+      <div class="name">
+        <div class="left">
+          <div class="cn">陳姿妗 Kelly Chen</div>
+          <div class="en">Founder / CEO · Tsuki Design Lab Ltd.</div>
         </div>
+        <div class="badge">持續創造的設計研究所</div>
+      </div>
 
-        <aside class="panel">
-          <h2>給 NFC / QR 用</h2>
-          <div class="list">
-            <div class="item">把 NFC 寫入「這個頁面網址」（不是 PDF）。</div>
-            <div class="item">PDF 在按鈕中開啟：<code>/kelly.pdf</code></div>
-            <div class="item">想更像「一碰就存聯絡人」：下一步加 vCard（.vcf）。</div>
-          </div>
-          <footer>如果你只想純 PDF 也行，但體驗會比較像「下載檔案」。</footer>
-        </aside>
+      <p class="desc">
+        致力於發展創新產品與服務設計，領域包括孩童、永續、醫療、物聯網及家電。
+      </p>
+
+      <div class="btns">
+        <a class="btn primary" href="/kelly.pdf" target="_blank" rel="noopener">開啟名片 PDF</a>
+        <a class="btn dark" href="mailto:tsukidesignlab@gmail.com">Email</a>
+        <a class="btn" href="tel:+886989344398">撥打電話</a>
       </div>
     </section>
 
-    <footer style="margin-top:14px">© Tsuki Design Lab — Minimal NFC card page</footer>
-  </div>
+    <section class="panel" aria-label="contact">
+      <div class="row">
+        <div class="k">IG</div>
+        <div class="v"><a href="https://instagram.com/tsuki_lab25" target="_blank" rel="noopener">@tsuki_lab25</a></div>
+      </div>
+
+      <div class="row">
+        <div class="k">LINE</div>
+        <div class="v"><a href="https://line.me/ti/p/~kellychen910912" target="_blank" rel="noopener">kellychen910912</a></div>
+      </div>
+
+      <div class="row">
+        <div class="k">電話</div>
+        <div class="v"><a href="tel:+886989344398">0989-344-398</a></div>
+      </div>
+
+      <div class="row">
+        <div class="k">Email</div>
+        <div class="v"><a href="mailto:tsukidesignlab@gmail.com">tsukidesignlab@gmail.com</a></div>
+      </div>
+
+      <div class="row">
+        <div class="k">地址</div>
+        <div class="v">臺北市中正區衡陽路10號7樓</div>
+      </div>
+    </section>
+
+    <footer>© Tsuki Design Lab — Minimal NFC card page</footer>
+  </main>
 </body>
 </html>
